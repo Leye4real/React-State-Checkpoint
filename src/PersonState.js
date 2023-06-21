@@ -23,16 +23,16 @@ toggleShow = () =>{
   render () {
     const {fullName, bio, imgSrc, profession, shows} = this.state
     return (
-      <div>
+      <div className='tap'>
         {
         shows && <div>
-        <p>fullName: {fullName}</p>
-        <p>bio: {bio}</p>
+        <p className='txt'>fullName: {fullName}</p>
+        <p className='txt'>bio: {bio}</p>
         <img src={imgSrc} width="500px" />
-        <p>profession: {profession}</p>
+        <p className='txt'>profession: {profession}</p>
         </div>
         }
-        <button onClick={this.toggleShow}>ClickMe</button>
+        <button Id="fx" onClick={this.toggleShow}>ClickMe</button>
         
       </div>
     )
