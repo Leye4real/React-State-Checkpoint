@@ -10,9 +10,18 @@ class PersonState extends Component {
       bio:"I am a Full Stack Developer",
       imgSrc:"https://www.altamira.ai/wp-content/uploads/2022/12/Full-Stack-DeveloperArtboard-2.png",
       profession:"A seasoned Full Stack Developer",
+      timeElapsed: 0,
       shows: true,
     }
   };
+
+  componentDidMount() {     
+    this.intervalId = setInterval(() =>{
+    this.setState((prevState) =>({         
+    timeElapsed: prevState.timeElapsed + 1,       }));     }, 1000);   
+  }    
+  
+  componentWillUnmount() {     clearInterval(this.intervalId);   }
 
 toggleShow = () =>{
   this.setState((prevState) => 
@@ -21,19 +30,21 @@ toggleShow = () =>{
 }
 
   render () {
-    const {fullName, bio, imgSrc, profession, shows} = this.state
+    const {fullName, bio, imgSrc, profession, timeElapsed, shows} = this.state
     return (
       <div className='tap'>
         {
         shows && <div>
-        <p className='txt'>fullName: {fullName}</p>
+        <p className='txt'>Full Name: {fullName}</p>
         <p className='txt'>bio: {bio}</p>
         <img src={imgSrc} width="500px" />
         <p className='txt'>profession: {profession}</p>
         </div>
         }
-        <button Id="fx" onClick={this.toggleShow}>ClickMe</button>
+        <button Id="fx" onClick={this.toggleShow}>Click Me</button>
         
+        <p className='txt'>Time Elapsed: {timeElapsed}</p>
+
       </div>
     )
     }
